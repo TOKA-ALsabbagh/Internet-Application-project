@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:file_manager_internet_applications_project/Routes/app_routes.dart';
 import 'package:file_manager_internet_applications_project/user/Groups/controllers/Groups_Controller.dart';
 import 'package:file_manager_internet_applications_project/user/Groups/models/Groups_Model.dart';
+import 'package:file_manager_internet_applications_project/user/files/my_booked_files/controller/booked_files_controller.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../../SharedPreferences/shared_preferences_service.dart';
@@ -87,6 +88,7 @@ class MultiSelectFileController extends GetxController {
       await Get.find<GroupsController>().fetchGroups();
       await Get.find<GroupsController>().fetchOwnGroups();
       await Get.find<GroupsController>().fetchOtherGroups();
+      await Get.find<MyBookedFilesController>().fetchBookedFiles(0);
       Get.offNamed(AppRoutes.Groups);
       print('Multi-selected files have been successfully checked in');
 

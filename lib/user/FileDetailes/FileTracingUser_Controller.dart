@@ -26,7 +26,7 @@ class FileTracingUserController extends GetxController {
     }
 
     final response = await http.get(
-      Uri.parse('http://195.88.87.77:8888/api/v1/files/tracing/$fileID'),
+      Uri.parse('http://195.88.87.77:8888/api/v1/file-tracing/$fileID'),
       headers: {
         'Authorization': 'Bearer $token',
       },

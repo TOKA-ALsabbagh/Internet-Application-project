@@ -28,7 +28,8 @@ refreshToken();
     };
 
     var body = json.encode({
-      'refreshToken': await _sharedPreferencesService.getRefreshToken(),
+      // 'refreshToken': (await _sharedPreferencesService.getRefreshToken())! + "jsabxdnb",
+      'refreshToken': (await _sharedPreferencesService.getRefreshToken())!,
     });
 
     try {

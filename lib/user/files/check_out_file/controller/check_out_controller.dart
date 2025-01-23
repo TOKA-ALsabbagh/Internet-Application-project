@@ -40,7 +40,7 @@ class CheckoutController extends GetxController {
           ElevatedButton(
             onPressed: () async {
               Get.back();
-              await checkout('', fileId);
+              await checkout([], fileId);
             },
             child: const Text("Check Out without Upload File"),
           ),
@@ -49,7 +49,7 @@ class CheckoutController extends GetxController {
             onPressed: () async {
               Get.back();
               await selectFile();
-              checkout(selectedFilePath.value, fileId);
+              checkout(selectedFileBytes, fileId);
             },
             child: const Text("Check Out with Upload File"),
           ),
@@ -58,7 +58,7 @@ class CheckoutController extends GetxController {
     );
   }
 
-  Future<void> checkout(String filesPath, int id) async {
+  Future<void> checkout(List<int> fileBytes, int id) async {
     final String? token = await _sharedPreferencesService.getToken();
 
     var headers = {
@@ -71,7 +71,7 @@ class CheckoutController extends GetxController {
       Uri.parse("http://195.88.87.77:8888/api/v1/files/check-out/$id"),
     );
     request.headers.addAll(headers);
-    if (filesPath.isNotEmpty) {
+    if (fileBytes.isNotEmpty) {
       // request.files.add(await http.MultipartFile.fromPath("file", filesPath));
       request.files.add(http.MultipartFile.fromBytes("file", selectedFileBytes,
           filename: selectedFileName.value));

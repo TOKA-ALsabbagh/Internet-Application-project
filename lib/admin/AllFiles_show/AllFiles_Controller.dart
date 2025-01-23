@@ -34,7 +34,7 @@ class AllfilesController extends GetxController {
       };
 
       var response = await http.get(
-        Uri.parse('http://195.88.87.77:8888/api/v1/files?pageNumber=$pageNumber&pageSize=1'),
+        Uri.parse('http://195.88.87.77:8888/api/v1/files?pageNumber=$pageNumber&pageSize=10'),
         headers: headers,
       );
 
